@@ -1,0 +1,132 @@
+* {
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	outline: none;
+	font-family: sans-serif;
+
+}
+
+.top_bar {
+	width: 100%;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background-color: rgba(0, 0, 0, .8);
+	color: #fff;
+	padding-left: 25px;
+	padding-right: 25px;
+	padding-top: 30px;
+	padding-bottom: 30px;
+	text-transform: uppercase;
+}
+
+.top_bar .tabs {
+	display: flex;
+	align-items: center;
+}
+
+.top_bar .tabs p {
+	padding-left: 15px;
+	padding-right: 15px;
+	letter-spacing: 1px;
+	font-weight: 600
+}
+
+.top_bar .buttons {
+	display: flex;
+}
+
+.top_bar .buttons button {
+	padding: 10px 20px;
+	border: none;
+	margin-left: 30px;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+}
+
+.pop_up,
+.pop_ups {
+	position: absolute;
+	left: 50%;
+	top: 50%;
+	transform: translate(-50%, -50%);
+	transition: all .4s ease-in-out;
+	background-color: darkgray;
+	padding: 90px 40px;
+	width: 30vw;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.pop_up.active,
+.pop_ups.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.pop_up p,
+.pop_ups p {
+	display: flex;
+	flex-direction: column;
+	width: 100%;
+}
+
+.pop_up p input,
+.pop_ups p input {
+	background: transparent;
+	border: none;
+	border-bottom: 1px solid #fff;
+	box-shadow: none;
+	margin-bottom: 12px;
+	margin-top: 10px;
+	padding-bottom: 3px;
+	color: #fff;
+}
+
+.pop_up button,
+.pop_ups button {
+	padding: 10px 50px;
+	margin-top: 30px;
+}
+
+.products {
+	padding: 30px 40px;
+	display: flex;
+	flex-wrap: wrap;
+}
+
+.products .product {
+	width: 20%;
+	text-align: center;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 15px;
+	transition: all .4s ease-in-out;
+}
+
+.products .product div.active {
+	background-color: bisque;
+}
+
+.products .product.hide {
+	display: none;
+}
+
+.products .product div {
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+	padding: 60px 30px;
+	border: 1px solid #b2b2b2;
+}
+
+.products .product h2 {
+	margin-bottom: 15px;
+}
+
+.products .product p {
+	margin-bottom: 15px;
+}
