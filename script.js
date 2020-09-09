@@ -18,7 +18,6 @@ $('body').on('click', '.tabs p:nth-child(3)', function () {
 let id_product;
 let id_cart;
 let ids = [];
-let products_ar = [];
 //BX24.callMethod(
 //	"crm.product.property.add", {
 //		fields: {
@@ -79,6 +78,7 @@ $('body').on('click', '.create', function () {
 	);
 });
 $('body').on('click', '.creates', function () {
+	let products_ar = [];
 	let name = $('#names').val();
 	let price = $('#prices').val();
 	let products = $('.product .active');
@@ -115,10 +115,64 @@ $('body').on('click', '.creates', function () {
 			$('.products').append('<div class="product single_cart" "><div><h2>' + $('#names').val() + '</h2><p>' + $('#descs').val() + '</p><i>' + $('#prices').val() + '</i></div></div>');
 			$('#names,#descs,#prices').val('');
 			$('.pop_ups').removeClass('active');
+			$('.product').removeClass('active');
 		}
 	);
 });
-
+$('body').on('click', '.buy', function () {
+	let price_lead = 0;
+	let products = $('.product .active');
+	for (let i = 0; i < products.length; i++) {
+		price_lead += parseInt($(this).find('i').text());
+	}
+	console.log(price_lead);
+	//	BX24.callMethod(
+	//		"crm.lead.add", {
+	//			fields: {
+	//				"TITLE": "Lead",
+	//				"NAME": "name",
+	//				"SECOND_NAME": "SECOND_NAME",
+	//				"LAST_NAME": "LAST_NAME",
+	//				"STATUS_ID": "NEW",
+	//				"OPENED": "Y",
+	//				"ASSIGNED_BY_ID": 1,
+	//				"CURRENCY_ID": "USD",
+	//				"OPPORTUNITY": 12500,
+	//				"PHONE": [{
+	//					"VALUE": "555888",
+	//					"VALUE_TYPE": "WORK"
+	//				}]
+	//			},
+	//			params: {
+	//				"REGISTER_SONET_EVENT": "Y"
+	//			}
+	//		},
+	//		function (result) {
+	//			if (result.error())
+	//				console.error(result.error());
+	//			else
+	//				console.info("Создан лид с ID " + result.data());
+	//		}
+	//	);
+	BX24.callMethod(
+		"crm.lead.fields", {},
+		function (result) {
+			if (result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+	);
+	BX24.callMethod(
+		"crm.deal.fields", {},
+		function (result) {
+			if (result.error())
+				console.error(result.error());
+			else
+				console.dir(result.data());
+		}
+	);
+});
 $('body').on('click', '.product:not(.single_cart) div', function () {
 	$(this).toggleClass('active');
 });
